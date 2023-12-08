@@ -33,6 +33,7 @@
 </body>
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 <script type='text/javascript'>
+    // console.log({{article.linguistic_figure | safe}})
     var graphs = {{article.linguistic_figure | safe}};
     var graphs2 = {{article.word_dist_figure | safe}};
     Plotly.plot('chart',graphs,{});

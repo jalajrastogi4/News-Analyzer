@@ -27,11 +27,10 @@ def linguistic_plot(article):
 
 
     fig1.update_layout(
-        title='Linguistic composition: original vs summary',
         xaxis_title='Word types',
         yaxis_title='Percentage share of word types',
-        width=800,
-        height=600
+        width=500,
+        height=400
     )
 
     plot_json = json.dumps(fig1, cls=plotly.utils.PlotlyJSONEncoder)
@@ -54,11 +53,10 @@ def word_count_distribution_plot(article):
     fig2.add_trace(go.Scatter(y=percentages, x=summary_values, mode='lines+markers', line_shape='spline', name='Summary'))
 
     fig2.update_layout(
-        title='Word count distribution: original vs summary',
         xaxis_title='Word count',
         yaxis_title='Percentage of text',
-        width=800,
-        height=600
+        width=500,
+        height=400
     )
 
     plot_json = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
