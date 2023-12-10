@@ -686,15 +686,17 @@ nav .menu a:hover {
                     <img src="https://picsum.photos/576/1024?random={{loop.index}}" alt="Slide 1">
                     <div class="slide-content">
                         <h3>
-                            <a class="article_url" style="color:white" href="{{ url_for('single_article', article_name=item.article_id) }}">
-                                {{item['title']}}
-                            </a>
+                            <!-- <a class="article_url" style="color:white" href="{{ url_for('single_article', article_name=item.article_id) }}"> -->
+                            {{item['title']}}
+                            <!-- </a> -->
                         </h3>
-                        <p class="views">
-                            <img src="https://via.placeholder.com/{{loop.index}}" alt="View Icon"><span>7k views</span>
-                        </p>
+                        <!-- <p class="views">
+                            <img src="https://via.placeholder.com/{{loop.index}}" alt="View Icon"><span></span>
+                        </p> -->
                         <p class="summary" style="display:none;">{{item['summary']}}</p>
                         <p class="publish_date" style="display:none;">{{item['pubDate']}}</p>
+                        <p class="newslink" style="display:none;">{{item['link']}}</p>
+                        <a class="article_url" style="color:white; display:none;" href="{{ url_for('single_article', article_name=item.article_id) }}"></a>
                     </div>
                 </div>
             {% endfor %}
@@ -723,6 +725,10 @@ nav .menu a:hover {
             <!-- Article Views and Publish Date -->
             <div class="article-info">
                 <p id="modalPublishDate">17 July 2023</p>
+                <p>
+                    Original Article : 
+                    <a id="modelLink" style="color:white;" href="#" target="_blank">Here</a>
+                </p>
                 <!-- <p id="modalViews">5k views</p> -->
             </div>
 
@@ -737,7 +743,7 @@ nav .menu a:hover {
 
             <!-- AI Summarization -->
             <div class="article-summary">
-                <h3>AI Summarization:</h3>
+                <h3>News Summary:</h3>
                 <p id="modalSummary">Quantum computing has the potential to revolutionize technology by processing information more quickly and accurately.</p>
             </div>
 
@@ -856,6 +862,7 @@ function showModal(targetElement) {
     var title = targetElement.querySelector('h3').innerText;
     // var views = targetElement.querySelector('.views').innerText;
     var summary = targetElement.querySelector('.summary').innerText;
+    var original_article = targetElement.querySelector('.newslink').innerText;
     var imgSrc = targetElement.querySelector('img').src;
     // var src_url = targetElement.querySelector('img').src;
     var pub_date = targetElement.querySelector('.publish_date').innerText;
@@ -881,6 +888,8 @@ function showModal(targetElement) {
     // document.getElementById('modalViews').innerText = views;
     document.getElementById('modalSummary').innerText = summary;
     document.getElementById('modalPublishDate').innerText = pub_date;
+    document.getElementById('modelLink').href = original_article;
+
 
     modalContent.style.backgroundImage = 'url(' + imgSrc + ')';
 
